@@ -5,7 +5,6 @@ from time import sleep
 import json
 
 def scrapping(container_soup):
-    #containers = page_soup.findAll('div',{'class': 'shelfProductTile-information'})
     
     containers = container_soup
     print('Total items in this page: ' + str(len(containers)))
@@ -34,14 +33,16 @@ def scrapping(container_soup):
         }
         
         arr.append(obj)
-    return arr
+    return arr, len(containers)
 
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
 driver = webdriver.Chrome(executable_path=r'C:/Users/Ultabook/Downloads/chromedriver_win32/chromedriver.exe',options=options)
 arr = []
+n_items = 1
+i = 1
 
-for i in range(1,8): #number of pages plus one
+while(n_items != 0):
     url = 'https://www.woolworths.com.au/shop/browse/fruit-veg/vegetables?pageNumber=' + str(i)
     print('page ' + str(i) + ": " + url)
     driver.get(url)
@@ -50,11 +51,14 @@ for i in range(1,8): #number of pages plus one
     page_soup = soup(html, 'html.parser')
     
     container_soup = page_soup.findAll('div', {'class': 'shelfProductTile-information'})
-    arrSinglePage = scrapping(container_soup)
+    arrSinglePage, n_items = scrapping(container_soup)
     for obj in arrSinglePage:
         arr.append(obj)
-        
-for i in range(1,4):
+    i = i + 1
+
+n_items = 1
+i = 1
+while(n_items != 0):
     url = 'https://www.woolworths.com.au/shop/browse/fruit-veg/fruit?pageNumber=' + str(i)
     print('page ' + str(i) + ": " + url)
     driver.get(url)
@@ -63,9 +67,10 @@ for i in range(1,4):
     page_soup = soup(html, 'html.parser')
     
     container_soup = page_soup.findAll('div', {'class': 'shelfProductTile-information'})
-    arrSinglePage = scrapping(container_soup)
+    arrSinglePage, n_items = scrapping(container_soup)
     for obj in arrSinglePage:
-        arr.append(obj)    
+        arr.append(obj)
+    i = i + 1
     
 with open('wooliesData.json', 'w') as outfile:
     json.dump(arr, outfile)
