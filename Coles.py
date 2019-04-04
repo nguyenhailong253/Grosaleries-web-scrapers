@@ -42,9 +42,12 @@ def scrapping(container_soup):
         arr.append(obj)
     return arr
 
+path_khai = r'C:/Users/Ultabook/Downloads/chromedriver_win32/chromedriver.exe'
+path_Ben = r'C:/Users/chromedriver.exe' #edit yours Ben
+
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
-driver = webdriver.Chrome(executable_path=r'C:/Users/Ultabook/Downloads/chromedriver_win32/chromedriver.exe',options=options)
+driver = webdriver.Chrome(executable_path=path_khai,options=options)
 arr = []
 
 for i in range(1,8): #number of pages plus one
