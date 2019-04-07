@@ -71,6 +71,23 @@ while(n_items != 0):
     for obj in arrSinglePage:
         arr.append(obj)
     i = i + 1
+
+n_items = 1
+i = 1
+
+while(n_items != 0):
+    url = 'https://www.woolworths.com.au/shop/browse/meat-seafood-deli/meat?pageNumber=' + str(i)
+    print('page ' + str(i) + ": " + url)
+    driver.get(url)
+    sleep(10)
+    html = driver.page_source
+    page_soup = soup(html, 'html.parser')
+    
+    container_soup = page_soup.findAll('div', {'class': 'shelfProductTile-information'})
+    arrSinglePage, n_items = scrapping(container_soup)
+    for obj in arrSinglePage:
+        arr.append(obj)
+    i = i + 1
     
 with open('wooliesData.json', 'w') as outfile:
     json.dump(arr, outfile)
