@@ -43,7 +43,7 @@ def scrapping(container_soup):
     return arr
 
 path_khai = r'C:/Users/Ultabook/Downloads/chromedriver_win32/chromedriver.exe'
-path_Ben = r'C:/Users/chromedriver.exe' #edit yours Ben
+path_Ben = r'C:\Users\ben-p\chromedriver.exe' 
 
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
