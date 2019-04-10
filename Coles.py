@@ -52,6 +52,9 @@ arr = []
 
 for i in range(1,8): #number of pages plus one
     url = 'https://shop.coles.com.au/a/a-vic-metro-vermont-south/everything/browse/fruit-vegetables?pageNumber=' + str(i)
+    headers = {'Accept': 'text/html'}
+    response = requests.get(rul, headers = headers)
+    print(response.status_code)
     print('page ' + str(i) + ": " + url)
     driver.get(url)
     sleep(10)
