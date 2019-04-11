@@ -43,7 +43,7 @@ def scrapping(container_soup):
     return arr
 
 path_khai = r'C:/Users/Ultabook/Downloads/chromedriver_win32/chromedriver.exe'
-path_Ben = r'C:/Users/chromedriver.exe' #edit yours Ben
+path_Ben = r'C:\Users\ben-p\chromedriver.exe' 
 
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
@@ -54,6 +54,9 @@ arr = []
 
 for i in range(1,8): #number of pages plus one
     url = 'https://shop.coles.com.au/a/a-vic-metro-vermont-south/everything/browse/fruit-vegetables?pageNumber=' + str(i)
+    headers = {'Accept': 'text/html'}
+    response = requests.get(rul, headers = headers)
+    print(response.status_code)
     print('page ' + str(i) + ": " + url)
     driver.get(url)
     sleep(10)
