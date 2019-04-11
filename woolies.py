@@ -12,9 +12,14 @@ def scrapping(container_soup):
     
     arr = []
     for container in containers:
+        # get the product name
         product_name = container.find('h3', {'class':'shelfProductTile-description'}).text.strip()
+        # set the supermarket name to woolies
         supermarket_name = 'Woolsworth'
+        # initial product is available
         availability = True
+
+        # check price and availability of each item
         if(container.find('div', {'class': 'shelfProductTile-cupPrice'})):
             price = container.find('div', {'class': 'shelfProductTile-cupPrice'}).text.strip()
         elif(container.find('span', {'class':'price-dollars'})):
@@ -24,21 +29,25 @@ def scrapping(container_soup):
         else:
             price = 'Unavailable at the momment'
             availability = False
-        
+
         obj = {
             "supermarket_name": supermarket_name,
             "product_name": product_name,
             "price": price,
             "availability": availability
         }
-        
+
+        #return all the items in the page
         arr.append(obj)
     return arr, len(containers)
 
+# adding webdriver options
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
 driver = webdriver.Chrome(executable_path=r'C:/Users/Ultabook/Downloads/chromedriver_win32/chromedriver.exe',options=options)
-arr = []
+
+# scrapping woolies vegetables section
+arr = [] #used to store every object
 n_items = 1
 i = 1
 
@@ -56,6 +65,7 @@ while(n_items != 0):
         arr.append(obj)
     i = i + 1
 
+# scrapping woolies fruit section
 n_items = 1
 i = 1
 while(n_items != 0):
@@ -72,6 +82,7 @@ while(n_items != 0):
         arr.append(obj)
     i = i + 1
 
+# scrapping woolies meat section
 n_items = 1
 i = 1
 
@@ -88,7 +99,8 @@ while(n_items != 0):
     for obj in arrSinglePage:
         arr.append(obj)
     i = i + 1
-    
+
+# write a json file on all items    
 with open('wooliesData.json', 'w') as outfile:
     json.dump(arr, outfile)
 

@@ -47,6 +47,8 @@ path_Ben = r'C:/Users/chromedriver.exe' #edit yours Ben
 
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
+#options.add_argument('--proxy-server=161.117.3.82:80')
+options.add_argument('user-agent= Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36')
 driver = webdriver.Chrome(executable_path=path_khai,options=options)
 arr = []
 
@@ -56,6 +58,7 @@ for i in range(1,8): #number of pages plus one
     driver.get(url)
     sleep(10)
     html = driver.page_source
+    print(html)
     page_soup = soup(html, 'html.parser')
     
     container_soup = page_soup.findAll('div', {'class': 'product-main-info'})
