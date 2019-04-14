@@ -1,0 +1,6 @@
+_satellite.pushAsyncScript(function(event, target, $variables){
+  if (_satellite.getQueryParamCaseInsensitive('clickid')) {
+    var clickid = _satellite.getQueryParamCaseInsensitive('clickid');
+    _satellite.setCookie('clickid', clickid);
+}
+});
