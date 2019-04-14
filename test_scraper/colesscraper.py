@@ -37,7 +37,7 @@ class ColesScraper:
 
         self.options = webdriver.ChromeOptions()
         self.options.add_argument(
-            '--user-agent={}'.format(USER_AGENT_OPTION))
+            '--user-agent={}'.format(HEADERS))
 
         self.driver = webdriver.Chrome(
             executable_path=self.driver_path, chrome_options=self.options)
