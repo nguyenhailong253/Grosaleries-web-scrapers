@@ -63,64 +63,33 @@ seller = {
 full_list.append(seller)
 arr = [] #used to store every object
 
-# scrapping woolies vegetables section
-n_items = 1
-i = 1
+# list of url section 
+url_header = ['https://www.woolworths.com.au/shop/browse/fruit-veg/vegetables?pageNumber=',
+              'https://www.woolworths.com.au/shop/browse/fruit-veg/fruit?pageNumber=',
+              'https://www.woolworths.com.au/shop/browse/meat-seafood-deli/meat?pageNumber='
+              ]
 
-while(n_items != 0):
-    url = 'https://www.woolworths.com.au/shop/browse/fruit-veg/vegetables?pageNumber=' + str(i)
-    print('page ' + str(i) + ": " + url)
-    driver.get(url)
-    sleep(10)
-    html = driver.page_source
-    page_soup = soup(html, 'html.parser')
+# scrapping for each section selected in the list
+for header in url_header:
+    n_items = 1
+    i = 1
+
+    while(n_items != 0):
+        url = header + str(i)
+        print('page ' + str(i) + ": " + url)
+        driver.get(url)
+        sleep(10)
+        html = driver.page_source
+        page_soup = soup(html, 'html.parser')
     
-    container_soup = page_soup.findAll('div', {'class': 'shelfProductTile-information'})
-    if(len(container_soup) != 0):
-        category = page_soup.find('h1', {'class': 'tileList-title'}).text.strip()
-    arrSinglePage, n_items = scrapping(container_soup, category)
-    for obj in arrSinglePage:
-        arr.append(obj)
-    i = i + 1
+        container_soup = page_soup.findAll('div', {'class': 'shelfProductTile-information'})
+        if(len(container_soup) != 0):
+            category = page_soup.find('h1', {'class': 'tileList-title'}).text.strip()
+        arrSinglePage, n_items = scrapping(container_soup, category)
+        for obj in arrSinglePage:
+            arr.append(obj)
+        i = i + 1
 
-# scrapping woolies fruit section
-n_items = 1
-i = 1
-while(n_items != 0):
-    url = 'https://www.woolworths.com.au/shop/browse/fruit-veg/fruit?pageNumber=' + str(i)
-    print('page ' + str(i) + ": " + url)
-    driver.get(url)
-    sleep(10)
-    html = driver.page_source
-    page_soup = soup(html, 'html.parser')
-    
-    container_soup = page_soup.findAll('div', {'class': 'shelfProductTile-information'})
-    if(len(container_soup) != 0):
-        category = page_soup.find('h1', {'class': 'tileList-title'}).text.strip()
-    arrSinglePage, n_items = scrapping(container_soup, category)
-    for obj in arrSinglePage:
-        arr.append(obj)
-    i = i + 1
-
-# scrapping woolies meat section
-n_items = 1
-i = 1
-
-while(n_items != 0):
-    url = 'https://www.woolworths.com.au/shop/browse/meat-seafood-deli/meat?pageNumber=' + str(i)
-    print('page ' + str(i) + ": " + url)
-    driver.get(url)
-    sleep(10)
-    html = driver.page_source
-    page_soup = soup(html, 'html.parser')
-    
-    container_soup = page_soup.findAll('div', {'class': 'shelfProductTile-information'})
-    if(len(container_soup) != 0):
-        category = page_soup.find('h1', {'class': 'tileList-title'}).text.strip()
-    arrSinglePage, n_items = scrapping(container_soup, category)
-    for obj in arrSinglePage:
-        arr.append(obj)
-    i = i + 1
 
 # add the products array to the full list
 products = {'products': arr}
