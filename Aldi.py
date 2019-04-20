@@ -55,7 +55,13 @@ full_list.append(seller)
 arr = [] #used to store every object
 
 # list of url section 
-url_header = ['https://www.aldi.com.au/en/groceries/super-savers/']
+url_header = ['https://www.aldi.com.au/en/groceries/super-savers/',
+              'https://www.aldi.com.au/en/groceries/just-organic/',
+              'https://www.aldi.com.au/en/groceries/awards/',
+              'https://www.aldi.com.au/en/groceries/baby-care/',
+              'https://www.aldi.com.au/en/groceries/chocolate/',
+              'https://www.aldi.com.au/en/groceries/coffee/',
+              'https://www.aldi.com.au/en/groceries/gluten-free/']
 
 # scrapping for each section selected in the list
 for header in url_header:
