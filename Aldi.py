@@ -62,7 +62,11 @@ url_header = ['https://www.aldi.com.au/en/groceries/super-savers/',
               'https://www.aldi.com.au/en/groceries/chocolate/',
               'https://www.aldi.com.au/en/groceries/coffee/',
               'https://www.aldi.com.au/en/groceries/gluten-free/',
-              'https://www.aldi.com.au/en/groceries/olive-oils/'']
+              'https://www.aldi.com.au/en/groceries/olive-oils/',
+              'https://www.aldi.com.au/en/groceries/liquor/',
+              'https://www.aldi.com.au/en/groceries/laundry/',
+              'https://www.aldi.com.au/en/groceries/skin-care/'
+              ]
 
 # scrapping for each section selected in the list
 for header in url_header:
