@@ -83,6 +83,9 @@ url_header = ['https://www.aldi.com.au/en/groceries/super-savers/',
               'https://www.aldi.com.au/en/groceries/laundry/',
               'https://www.aldi.com.au/en/groceries/olive-oils/',
               'https://www.aldi.com.au/en/groceries/liquor/wine/',
+              'https://www.aldi.com.au/en/groceries/liquor/champagne-sparkling/',
+              'https://www.aldi.com.au/en/groceries/liquor/beer-cider/',
+              'https://www.aldi.com.au/en/groceries/liquor/spirits/',
               'https://www.aldi.com.au/en/groceries/laundry/',
               'https://www.aldi.com.au/en/groceries/skin-care/'
               ]
