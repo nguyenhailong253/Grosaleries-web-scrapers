@@ -18,24 +18,22 @@ def scrapping(container_soup, category):
         # get the product name
         product_name = container.find(
             'div', {'class': 'box--description--header'}).text.strip()
+        
         # initial product is available
         availability = True
+        
         # get the date and time of the scrapping time
         date_now = datetime.datetime.now()
 
-        price = container.find(
-            'span', {'class': 'box--baseprice'}).text.strip()
-
-        if not price:
-            dollar_value = container.find(
-                'span', {'class': 'box--value'}).text.strip()
-
-            if dollar_value:
-                cent_value = container.find(
-                    'span', {'class': 'box--decimal'}).text.strip()
-                price = dollar_value + cent_value
-            else:
-                price = "NA"
+        # set initial price to NA
+        price = "NA"
+        
+        if (container.find('span', {'class': 'box--baseprice'})):
+            price = container.find('span', {'class': 'box--baseprice'}).text.strip()
+        elif (container.find('span', {'class': 'box--value'})):
+            dollar_value = container.find('span', {'class': 'box--value'}).text.strip()
+            cent_value = container.find('span', {'class': 'box--decimal'}).text.strip()
+            price = dollar_value + cent_value
 
         obj = {
             "name": product_name,
@@ -45,8 +43,6 @@ def scrapping(container_soup, category):
             "category": category,
             "pic": None
         }
-
-        print("Product scraped: {}\n".format(obj))
 
         # return all the items in the page
         arr.append(obj)
@@ -82,11 +78,7 @@ url_header = ['https://www.aldi.com.au/en/groceries/super-savers/',
               'https://www.aldi.com.au/en/groceries/gluten-free/',
               'https://www.aldi.com.au/en/groceries/laundry/',
               'https://www.aldi.com.au/en/groceries/olive-oils/',
-              'https://www.aldi.com.au/en/groceries/liquor/wine/',
-              'https://www.aldi.com.au/en/groceries/liquor/champagne-sparkling/',
-              'https://www.aldi.com.au/en/groceries/liquor/beer-cider/',
-              'https://www.aldi.com.au/en/groceries/liquor/spirits/',
-              'https://www.aldi.com.au/en/groceries/laundry/',
+              'https://www.aldi.com.au/en/groceries/liquor/',
               'https://www.aldi.com.au/en/groceries/skin-care/'
               ]
 
