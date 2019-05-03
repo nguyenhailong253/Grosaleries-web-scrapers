@@ -64,11 +64,8 @@ full_list.append(seller)
 arr = [] #used to store every object
 
 # list of url section 
-url_header = ['https://www.woolworths.com.au/shop/browse/fruit-veg/vegetables?pageNumber=',
-              'https://www.woolworths.com.au/shop/browse/fruit-veg/fruit?pageNumber=',
-              'https://www.woolworths.com.au/shop/browse/meat-seafood-deli/meat?pageNumber=',
-              'https://www.woolworths.com.au/shop/browse/meat-seafood-deli/seafood?pageNumber=',
-              'https://www.woolworths.com.au/shop/browse/meat-seafood-deli/deli-meats?pageNumber=',
+url_header = ['https://www.woolworths.com.au/shop/browse/fruit-veg?pageNumber=',
+              'https://www.woolworths.com.au/shop/browse/meat-seafood-deli?pageNumber=',
               'https://www.woolworths.com.au/shop/browse/bakery?pageNumber=',
               'https://www.woolworths.com.au/shop/browse/dairy-eggs-fridge?pageNumber=',
               'https://www.woolworths.com.au/shop/browse/pantry?pageNumber=',

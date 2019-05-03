@@ -113,8 +113,6 @@ products = {'products': arr}
 full_list.append(products)
 
 # convert datetime format to fit json
-
-
 def myconverter(o):
     if isinstance(o, datetime.datetime):
         return o.__str__()
