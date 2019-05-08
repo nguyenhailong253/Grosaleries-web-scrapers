@@ -9,7 +9,7 @@ import datetime
 # adding webdriver options
 options = webdriver.ChromeOptions()
 options.add_argument("--start-maximized")
-driver = webdriver.Chrome(executable_path=r'C:/Users/Ultabook/Downloads/chromedriver_win32/chromedriver.exe',options=options)
+driver = webdriver.Chrome(executable_path=r'./chromedriver.exe',options=options)
 
 # contain full list details for woolies
 full_list = []
