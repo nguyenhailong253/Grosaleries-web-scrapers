@@ -17,16 +17,17 @@ def scrapping(container_soup, category):
         # get the product name
         product_name = container.find(
             'div', {'class': 'box--description--header'}).text.strip()
-        
+
         # initial product is available
         availability = True
-        
+
         # get the date and time of the scrapping time
         date_now = datetime.datetime.now()
 
         # set initial price to NA
         price = "NA"
-        
+        pic = None
+
         if (container.find('span', {'class': 'box--baseprice'})):
             price = container.find('span', {'class': 'box--baseprice'}).text.strip()
         elif (container.find('span', {'class': 'box--value'})):
@@ -34,13 +35,17 @@ def scrapping(container_soup, category):
             cent_value = container.find('span', {'class': 'box--decimal'}).text.strip()
             price = dollar_value + cent_value
 
+        if (container.find('div', {'class': 'box--image-container'})):
+            tmp = container.find('div', {'class': 'box--image-container'})
+            pic = tmp.img['src']
+
         obj = {
             "name": product_name,
             "price": price,
             "availability": availability,
             "datetime": date_now,
             "category": category,
-            "pic": None
+            "pic": pic
         }
 
         # return all the items in the page
@@ -51,4 +56,3 @@ def scrapping(container_soup, category):
 def myconverter(o):
     if isinstance(o, datetime.datetime):
         return o.__str__()
-
