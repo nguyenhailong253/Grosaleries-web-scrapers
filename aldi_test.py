@@ -12,7 +12,7 @@ class TestAldi(unittest.TestCase):
         self.assertEqual(isinstance(actual, str) , True)
         self.assertEqual(isinstance(actual, int), False)
 
-    def test_scrapper(self):
+    def test_scrapper_number_items(self):
         with open('indexAldi.html') as html:
             container_soup = soup(html, 'html.parser')
 
@@ -21,8 +21,41 @@ class TestAldi(unittest.TestCase):
 
         self.assertEqual(n_items, 5)
 
+    def test_scrapper_name(self):
+        with open('indexAldi.html') as html:
+            container_soup = soup(html, 'html.parser')
+
+        container_soup = container_soup.findAll('a', {'title': 'to product detail'})
+        arr, n_items = scrapping(container_soup, 'Snacks')
+
         self.assertEqual(arr[0]["name"], "Berg Maple Streaky Bacon 200g")
+
+    def test_scrapper_price(self):
+        with open('indexAldi.html') as html:
+            container_soup = soup(html, 'html.parser')
+
+        container_soup = container_soup.findAll('a', {'title': 'to product detail'})
+        arr, n_items = scrapping(container_soup, 'Snacks')
+    
         self.assertEqual(arr[0]["price"], "$19.95 per kg")
+
+    def test_scrapper_category(self):
+        with open('indexAldi.html') as html:
+            container_soup = soup(html, 'html.parser')
+
+        container_soup = container_soup.findAll('a', {'title': 'to product detail'})
+        arr, n_items = scrapping(container_soup, 'Stationery')
+
+        self.assertEqual(arr[0]["category"], "Stationery")
+
+    def test_scrapper_availability(self):
+        with open('indexAldi.html') as html:
+            container_soup = soup(html, 'html.parser')
+
+        container_soup = container_soup.findAll('a', {'title': 'to product detail'})
+        arr, n_items = scrapping(container_soup, 'Stationery')
+
+        self.assertEqual(arr[0]["availability"], True)
 
 if __name__ == "__main__":
     unittest.main()
