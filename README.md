@@ -14,10 +14,12 @@ GroSaleries is a price aggregator for Australian residents looking for cheapest 
 - ChromeDriver 73.0.3683.68
 
 ## Running scraper
-- Aldi
+Aldi
+
     cd ./src/aldi
     python aldi.py
 
-- Woolworths
+Woolies
+
     cd ./src/woolies
     python woolies.py
