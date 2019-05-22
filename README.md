@@ -3,7 +3,7 @@ Aldi and Woolworths web scrapers.
 The scrapers only scrape general information of a product: product name, price, description, date scraped
 
 ## About Grosaleries
-GroSaleries is a price aggregator for Australian residents looking for cheapest grocery products. User can type in the product name in the search bar and then prices of that product from Woolworths and Aldi will be displayed
+GroSaleries is a price aggregator for Australian residents looking for cheapest grocery products. User can type in the product name in the search bar and then prices of that product from Woolworths and Aldi will be displayed for user to compare
 
 ## Requirements
 - Python 3.7.x
