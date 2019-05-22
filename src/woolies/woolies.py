@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup as soup
 from selenium import webdriver
 from urllib.request import urlopen
 from time import sleep
-from woolieshelper import *
+from woolies_helper import *
 import json
 import datetime
 

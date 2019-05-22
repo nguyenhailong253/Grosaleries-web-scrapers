@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup as soup
 from selenium import webdriver
 from urllib.request import urlopen
 from time import sleep
-from Aldihelper import *
+from aldi_helper import *
 import json
 import datetime
 
